@@ -5,16 +5,25 @@
   <version>1.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>AsteroidsFX</name>
-  <repositories/>
+  <modules>
+    <module>Core</module>
+  </modules>
+
+
+
   <properties>
-    <java>java</java>
+    <java>${env.JAVA_HOME}/bin/java</java>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.9</maven.compiler.source>
     <maven.compiler.target>1.9</maven.compiler.target>
   </properties>
+
+
   <dependencyManagement>
     <dependencies/>
   </dependencyManagement>
+
+
   <build>
     <plugins>
       <plugin>
@@ -51,7 +60,7 @@
             <argument>--module-path=mods-mvn</argument>
             <argument>--class-path=libs/*</argument>
             <argument>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=127.0.0.1:8000</argument>
-            <argument>--module=Core/dk.sdu.cbse.Main</argument>
+            <argument>--module=Core/dk.sdu.mmmi.cbse.core.Main</argument>
             <argument>--add-modules javafx.graphics</argument>
           </arguments>
         </configuration>
@@ -124,7 +133,4 @@
       </build>
     </profile>
   </profiles>
-  <modules>
-    <module>Core</module>
-  </modules>
 </project>

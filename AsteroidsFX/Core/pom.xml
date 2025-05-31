@@ -13,7 +13,7 @@
 
 
   <name>Core</name>
-
+  <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,26 +57,8 @@
               <outputDirectory>../mods-mvn</outputDirectory>
             </configuration>
           </execution>
-          <execution>
-            <id>copy</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>org.openjfx</groupId>
-                  <artifactId>javafx-controls</artifactId>
-                  <overWrite>true</overWrite>
-                  <outputDirectory>../libs</outputDirectory>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
-
 </project>

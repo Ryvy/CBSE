@@ -1,3 +1,3 @@
 module Core {
-    exports dk.sdu.cbse.main;
+    exports dk.sdu.mmmi.cbse.core;
 }

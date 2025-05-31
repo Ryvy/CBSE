@@ -1,4 +1,4 @@
-package dk.sdu.cbse.main;
+package dk.sdu.mmmi.cbse.core;
 
 public class Main
 {
