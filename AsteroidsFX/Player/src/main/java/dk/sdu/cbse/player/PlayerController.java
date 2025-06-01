@@ -25,7 +25,7 @@ public class PlayerController implements IEntityProcessing {
         if(gameData.getInput().ispressed(Input.SPACE)){
             BulletSPI bulletSPI = GetBulletSPI();
             if(bulletSPI != null){
-                Entity newBullet = bulletSPI.CreateBullet(new double[]{player.getXCoordinate(), player.getYCoordinate()}, player.getRotationAngle());
+                Entity newBullet = bulletSPI.CreateBullet(player, player.getRotationAngle());
                 world.addEntity(newBullet);
             }
         }

@@ -9,12 +9,14 @@ import dk.sdu.cbse.common.World;
 
 public class BulletSystem implements BulletSPI, IEntityProcessing {
 
-
-
     @Override
-    public Entity CreateBullet(double[] position, double rotation) {
+    public Entity CreateBullet(Entity player, double rotation) {
         Bullet bullet = new Bullet();
         bullet.setCoordinates(0,2,1,1,2,0,1,-1,0,-2,-1,-1,-2,0,-1,1);
+        bullet.setXCoordinate(player.getXCoordinate());
+        bullet.setYCoordinate(player.getYCoordinate());
+        bullet.setRotationAngle(player.getRotationAngle());
+
         return bullet;
     }
 
@@ -23,8 +25,8 @@ public class BulletSystem implements BulletSPI, IEntityProcessing {
         for(Bullet bullet : world.getEntities(Bullet.class)){
             double xChange = Math.cos(Math.toRadians(bullet.getRotationAngle()));
             double yChange = Math.sin(Math.toRadians(bullet.getRotationAngle()));
-            bullet.setXCoordinate(bullet.getXCoordinate() + xChange);
-            bullet.setYCoordinate(bullet.getYCoordinate() + yChange);
+            bullet.setXCoordinate(bullet.getXCoordinate() + xChange * 4);
+            bullet.setYCoordinate(bullet.getYCoordinate() + yChange * 4);
         }
     }
 }

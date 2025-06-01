@@ -1,5 +1,6 @@
 import dk.sdu.cbse.BulletPlugin;
 import dk.sdu.cbse.BulletSystem;
+import dk.sdu.cbse.bulletsystem.BulletSPI;
 import dk.sdu.cbse.common.IEntityProcessing;
 import dk.sdu.cbse.common.IPlugin;
 
@@ -9,4 +10,5 @@ module BulletSystem {
 
     provides IPlugin with BulletPlugin;
     provides IEntityProcessing with BulletSystem;
+    provides BulletSPI with BulletSystem;
 }
