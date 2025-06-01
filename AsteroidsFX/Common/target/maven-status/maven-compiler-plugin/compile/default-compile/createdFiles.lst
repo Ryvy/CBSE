@@ -1,6 +1,8 @@
 dk\sdu\cbse\common\Input.class
+dk\sdu\cbse\common\IEntityPostProcessing.class
 dk\sdu\cbse\common\IPlugin.class
 dk\sdu\cbse\common\Entity.class
 module-info.class
 dk\sdu\cbse\common\GameData.class
+dk\sdu\cbse\common\IEntityProcessing.class
 dk\sdu\cbse\common\World.class

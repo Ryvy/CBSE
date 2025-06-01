@@ -68,15 +68,17 @@ public class Game {
     }
 
     public void Update(){
-        for(IEntityProcessing iEntityProcessing : entityProcessings){
-            iEntityProcessing.process(gameData, world);
-        }
+        if(entityProcessings != null)
+            for(IEntityProcessing iEntityProcessing : entityProcessings){
+                iEntityProcessing.process(gameData, world);
+            }
     }
 
     public void LateUpdate(){
-        for(IEntityPostProcessing entityPostProcessing : entityPostProcessings){
-            entityPostProcessing.process(gameData, world);
-        }
+        if(entityProcessings != null)
+            for(IEntityPostProcessing entityPostProcessing : entityPostProcessings){
+                entityPostProcessing.process(gameData, world);
+            }
     }
 
     public void Draw(){
