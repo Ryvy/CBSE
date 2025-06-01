@@ -1,2 +1,4 @@
 dk\sdu\cbse\player\Player.class
+dk\sdu\cbse\player\PlayerController.class
+dk\sdu\cbse\player\PlayerPlugin.class
 module-info.class

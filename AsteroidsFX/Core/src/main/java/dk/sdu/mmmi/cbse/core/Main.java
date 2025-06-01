@@ -16,5 +16,6 @@ public class Main extends Application
     public void start(Stage primaryStage) {
         Game game = new Game();
         game.startGame(primaryStage);
+        game.GameLoop();
     }
 }

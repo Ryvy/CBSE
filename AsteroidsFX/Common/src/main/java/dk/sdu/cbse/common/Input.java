@@ -6,10 +6,10 @@ public class Input {
     private static boolean[] keys = new boolean[keyNum];
     private static boolean[] pressedKeys = new boolean[keyNum];
 
-    public static int up = 0;
-    public static int left = 1;
-    public static int right = 2;
-    public static int space = 3;
+    public static final int UP = 0;
+    public static final int LEFT = 1;
+    public static final int RIGHT = 2;
+    public static final int SPACE = 3;
 
     public void update(){
         for (int i = 0; i < keyNum; i++) {

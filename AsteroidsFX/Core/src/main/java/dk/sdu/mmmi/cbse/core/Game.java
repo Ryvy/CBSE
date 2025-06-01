@@ -1,6 +1,7 @@
 package dk.sdu.mmmi.cbse.core;
 
 import dk.sdu.cbse.common.*;
+import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
@@ -29,46 +30,67 @@ public class Game {
     public void startGame(Stage stage) {
         stage.setTitle("Asteroids");
 
-        scene.setOnKeyPressed(event -> {
-            if(event.getCode().equals(KeyCode.A)){
-                gameData.getInput().setkey(Input.left, true);
-            }
-            if(event.getCode().equals(KeyCode.D)){
-                gameData.getInput().setkey(Input.right, true);
-            }
-            if(event.getCode().equals(KeyCode.W)){
-                gameData.getInput().setkey(Input.up, true);
-            }
-            if(event.getCode().equals(KeyCode.SPACE)){
-                gameData.getInput().setkey(Input.space, true);
-            }
-        });
 
-        scene.setOnKeyReleased(event ->{
-            if(event.getCode().equals(KeyCode.A)){
-                gameData.getInput().setkey(Input.left, false);
-            }
-            if(event.getCode().equals(KeyCode.D)){
-                gameData.getInput().setkey(Input.right, false);
-            }
-            if(event.getCode().equals(KeyCode.W)){
-                gameData.getInput().setkey(Input.up, false);
-            }
-            if(event.getCode().equals(KeyCode.SPACE)){
-                gameData.getInput().setkey(Input.space, false);
-            }
-        });
+        getEntityProcessingServices();
+        getPluginServices();
+        getEntityPostProcessingServices();
 
-        Update();
-
-        Draw();
-
-        gameData.getInput().update();
-
-        LateUpdate();
+        RunPlugins();
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void GameLoop(){
+        new AnimationTimer(){
+
+            @Override
+            public void handle(long l) {
+
+                scene.setOnKeyPressed(event -> {
+                    if(event.getCode().equals(KeyCode.A)){
+                        gameData.getInput().setkey(Input.LEFT, true);
+                    }
+                    if(event.getCode().equals(KeyCode.D)){
+                        gameData.getInput().setkey(Input.RIGHT, true);
+                    }
+                    if(event.getCode().equals(KeyCode.W)){
+                        gameData.getInput().setkey(Input.UP, true);
+                    }
+                    if(event.getCode().equals(KeyCode.SPACE)){
+                        gameData.getInput().setkey(Input.SPACE, true);
+                    }
+                });
+
+                scene.setOnKeyReleased(event ->{
+                    if(event.getCode().equals(KeyCode.A)){
+                        gameData.getInput().setkey(Input.LEFT, false);
+                    }
+                    if(event.getCode().equals(KeyCode.D)){
+                        gameData.getInput().setkey(Input.RIGHT, false);
+                    }
+                    if(event.getCode().equals(KeyCode.W)){
+                        gameData.getInput().setkey(Input.UP, false);
+                    }
+                    if(event.getCode().equals(KeyCode.SPACE)){
+                        gameData.getInput().setkey(Input.SPACE, false);
+                    }
+                });
+
+                gameData.getInput().update();
+                Update();
+                Draw();
+                LateUpdate();
+            }
+        }.start();
+    }
+
+    public void RunPlugins(){
+        if(plugins != null){
+            for(IPlugin plugin : getPluginServices()){
+                plugin.start(gameData, world);
+            }
+        }
     }
 
     public void Update(){
@@ -117,6 +139,7 @@ public class Game {
     }
 
     private List<IPlugin> getPluginServices() {
+        System.out.println("Loading plugins");
         if (plugins == null) {
             plugins = new ArrayList<>();
             ServiceLoader.load(IPlugin.class).forEach(plugins::add);

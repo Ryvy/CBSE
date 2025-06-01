@@ -7,8 +7,8 @@ public class Entity implements Serializable {
 
     private final UUID ID = UUID.randomUUID();
 
-    private float xCoordinate;
-    private float yCoordinate;
+    private double xCoordinate;
+    private double yCoordinate;
     private double[] polygon;
     private float rotationAngle;
     private float size;
@@ -26,9 +26,9 @@ public class Entity implements Serializable {
     public float getSize() { return size; }
     public void setSize(float size) { this.size = size; }
 
-    public float getXCoordinate() { return xCoordinate; }
-    public float getYCoordinate() { return yCoordinate; }
-    public void setXCoordinate(float xCoordinate) { this.xCoordinate = xCoordinate; }
-    public void setYCoordinate(float yCoordinate) { this.yCoordinate = yCoordinate; }
+    public double getXCoordinate() { return xCoordinate; }
+    public double getYCoordinate() { return yCoordinate; }
+    public void setXCoordinate(double xCoordinate) { this.xCoordinate = xCoordinate; }
+    public void setYCoordinate(double yCoordinate) { this.yCoordinate = yCoordinate; }
 
 }
