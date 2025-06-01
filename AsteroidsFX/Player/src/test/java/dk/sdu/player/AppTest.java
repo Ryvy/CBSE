@@ -1,4 +1,4 @@
-package dk.sdu.cbse;
+package dk.sdu.player;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
