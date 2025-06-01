@@ -1,17 +1,23 @@
 package dk.sdu.mmmi.cbse.core;
 
-import dk.sdu.cbse.common.Input;
+import dk.sdu.cbse.common.*;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import dk.sdu.cbse.common.GameData;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ServiceLoader;
 
 
 public class Game {
 
+    private final World world = new World();
     private final GameData gameData = new GameData();
+    private List<IEntityProcessing> entityProcessings;
+    private List<IPlugin> plugins;
+    private List<IEntityPostProcessing> entityPostProcessings;
 
     public void startGame(Stage stage) {
         stage.setTitle("Asteroids");
@@ -49,8 +55,56 @@ public class Game {
             }
         });
 
+        Update();
+
+        Draw();
+
+        gameData.getInput().update();
+
+        LateUpdate();
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void Update(){
+        for(IEntityProcessing iEntityProcessing : entityProcessings){
+            iEntityProcessing.process(gameData, world);
+        }
+    }
+
+    public void LateUpdate(){
+        for(IEntityPostProcessing entityPostProcessing : entityPostProcessings){
+            entityPostProcessing.process(gameData, world);
+        }
+    }
+
+    public void Draw(){
+
+    }
+
+
+    private List<IEntityProcessing> getEntityProcessingServices() {
+        if (entityProcessings == null) {
+            entityProcessings = new ArrayList<>();
+            ServiceLoader.load(IEntityProcessing.class).forEach(entityProcessings::add);
+        }
+        return entityProcessings;
+    }
+
+    private List<IPlugin> getPluginServices() {
+        if (plugins == null) {
+            plugins = new ArrayList<>();
+            ServiceLoader.load(IPlugin.class).forEach(plugins::add);
+        }
+        return plugins;
+    }
+
+    private List<IEntityPostProcessing> getEntityPostProcessingServices() {
+        if (entityPostProcessings == null) {
+            entityPostProcessings = new ArrayList<>();
+            ServiceLoader.load(IEntityPostProcessing.class).forEach(entityPostProcessings::add);
+        }
+        return entityPostProcessings;
     }
 }

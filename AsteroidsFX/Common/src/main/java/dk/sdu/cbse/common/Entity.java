@@ -9,7 +9,7 @@ public class Entity implements Serializable {
 
     private float xCoordinate;
     private float yCoordinate;
-    private float[] coordinates;
+    private float[] polygon;
     private float rotationAngle;
     private float size;
 
@@ -17,9 +17,8 @@ public class Entity implements Serializable {
         return ID.toString();
     }
 
-    public float[] getCoordinates() { return coordinates; }
-    public void setCoordinates(float[] newCoordinates) { coordinates = newCoordinates; }
-    public void setCoordinates(float xCoordinate, float yCoordinate) {coordinates = new float[]{xCoordinate, yCoordinate};}
+    public float[] getCoordinates() { return polygon; }
+    public void setCoordinates(float... polygonCoordinates) { this.polygon = polygonCoordinates; }
 
     public float getRotationAngle() { return rotationAngle; }
     public void setRotationAngle(float rotationAngle) { this.rotationAngle = rotationAngle; }
