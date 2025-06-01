@@ -13,16 +13,16 @@ public class World {
     }
 
     public <E extends Entity> List<E> getEntities(Class<E>... entityClass) {
-        List<E> r = new ArrayList<>();
+        List<E> returnList = new ArrayList<>();
 
-        List<Class<E>> t = Arrays.stream(entityClass).toList();
+        List<Class<E>> ListToCheck = Arrays.stream(entityClass).toList();
 
         for (Entity entity : entities) {
-            if(t.contains(entity.getClass())) {
-                r.add((E)entity);
+            if(ListToCheck.contains(entity.getClass())) {
+                returnList.add((E)entity);
             }
         }
-        return r;
+        return returnList;
     }
 
     public void addEntity(Entity entity) {
