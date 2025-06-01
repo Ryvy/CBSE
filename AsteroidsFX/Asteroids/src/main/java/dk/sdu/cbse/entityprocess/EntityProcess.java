@@ -1,8 +1,8 @@
-package dk.sdu.cbse.asteroids;
+package dk.sdu.cbse.entityprocess;
 
 import dk.sdu.cbse.commonasteroid.Asteroid;
 
-public class SplitAsteroid extends Asteroid {
+public class EntityProcess extends Asteroid {
 
     private int splitsLeft = 1;
 

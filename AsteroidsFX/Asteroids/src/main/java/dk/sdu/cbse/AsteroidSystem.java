@@ -1,14 +1,12 @@
-package dk.sdu.cbse.asteroids;
+package dk.sdu.cbse;
 
+import dk.sdu.cbse.entityprocess.EntityProcess;
 import dk.sdu.cbse.common.*;
-import dk.sdu.cbse.commonasteroid.Asteroid;
 import dk.sdu.cbse.commonasteroid.AsteroidSPI;
 import dk.sdu.cbse.commoncollision.IEntityCollisionEvent;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.ServiceLoader;
 
 public class AsteroidSystem implements IEntityProcessing, AsteroidSPI {
 
@@ -19,13 +17,13 @@ public class AsteroidSystem implements IEntityProcessing, AsteroidSPI {
     @Override
     public void process(GameData gameData, World world) {
 
-        if (world.getEntities(SplitAsteroid.class).isEmpty()){
+        if (world.getEntities(EntityProcess.class).isEmpty()){
             Entity Asteroid = createAsteroid(new double[]{0,0}, rnd.nextInt(90));
             world.addEntity(Asteroid);
             System.out.println("Asteroid created");
         }
 
-        for(Entity asteroid : world.getEntities(SplitAsteroid.class)) {
+        for(Entity asteroid : world.getEntities(EntityProcess.class)) {
             double xMovement = Math.cos(Math.toRadians(asteroid.getRotationAngle()));
             double yMovement = Math.sin(Math.toRadians(asteroid.getRotationAngle()));
 
@@ -36,7 +34,7 @@ public class AsteroidSystem implements IEntityProcessing, AsteroidSPI {
 
     @Override
     public Entity createAsteroid(double[] coordinates, float rotation) {
-        Entity asteroid = new SplitAsteroid();
+        Entity asteroid = new EntityProcess();
         int size = 10;
         asteroid.setCoordinates(size, -size, -size, -size, -size, size, size, size);
         asteroid.setXCoordinate((coordinates[0]));

@@ -1,4 +1,4 @@
-dk\sdu\cbse\asteroids\AsteroidPlugin.class
+dk\sdu\cbse\AsteroidSystem.class
 module-info.class
-dk\sdu\cbse\asteroids\AsteroidSystem.class
-dk\sdu\cbse\asteroids\SplitAsteroid.class
+dk\sdu\cbse\AsteroidPlugin.class
+dk\sdu\cbse\entityprocess\EntityProcess.class

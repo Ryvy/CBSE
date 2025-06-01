@@ -1,4 +1,4 @@
-dk\sdu\cbse\player\Player.class
-dk\sdu\cbse\player\PlayerController.class
-dk\sdu\cbse\player\PlayerPlugin.class
+dk\sdu\cbse\entityprocess\PlayerPlugin.class
+dk\sdu\cbse\entityprocess\PlayerController.class
 module-info.class
+dk\sdu\cbse\entityprocess\EntityProcess.class

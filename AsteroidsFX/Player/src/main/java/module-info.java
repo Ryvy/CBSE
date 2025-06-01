@@ -1,13 +1,11 @@
 import dk.sdu.cbse.bulletsystem.BulletSPI;
-import dk.sdu.cbse.common.IEntityPostProcessing;
 import dk.sdu.cbse.common.IEntityProcessing;
 import dk.sdu.cbse.common.IPlugin;
-import dk.sdu.cbse.player.Player;
-import dk.sdu.cbse.player.PlayerController;
-import dk.sdu.cbse.player.PlayerPlugin;
+import dk.sdu.cbse.entityprocess.PlayerController;
+import dk.sdu.cbse.entityprocess.PlayerPlugin;
 
 module Player {
-    exports dk.sdu.cbse.player;
+    exports dk.sdu.cbse.entityprocess;
     requires Common;
     requires CommonBullet;
 
