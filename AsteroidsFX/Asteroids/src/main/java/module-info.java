@@ -6,6 +6,7 @@ import dk.sdu.cbse.common.IPlugin;
 module Asteroids {
     requires CommonAsteroid;
     requires Common;
+    requires CommonCollision;
 
     provides IPlugin with AsteroidPlugin;
     provides IEntityProcessing with AsteroidSystem;

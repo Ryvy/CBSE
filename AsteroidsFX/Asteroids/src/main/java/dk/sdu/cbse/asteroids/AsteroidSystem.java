@@ -1,17 +1,20 @@
 package dk.sdu.cbse.asteroids;
 
-import dk.sdu.cbse.common.Entity;
-import dk.sdu.cbse.common.GameData;
-import dk.sdu.cbse.common.IEntityProcessing;
-import dk.sdu.cbse.common.World;
+import dk.sdu.cbse.common.*;
 import dk.sdu.cbse.commonasteroid.Asteroid;
 import dk.sdu.cbse.commonasteroid.AsteroidSPI;
+import dk.sdu.cbse.commoncollision.IEntityCollisionEvent;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.ServiceLoader;
 
 public class AsteroidSystem implements IEntityProcessing, AsteroidSPI {
 
     Random rnd = new Random();
+
+    private List<IEntityCollisionEvent> entityCollisionEvents;
 
     @Override
     public void process(GameData gameData, World world) {

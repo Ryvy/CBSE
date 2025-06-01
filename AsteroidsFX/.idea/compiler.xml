@@ -10,6 +10,7 @@
         <module name="Test" />
         <module name="BulletSystem" />
         <module name="Asteroids" />
+        <module name="CommonCollision" />
         <module name="Enemy" />
         <module name="CommonAsteroid" />
         <module name="CollisionSystem" />

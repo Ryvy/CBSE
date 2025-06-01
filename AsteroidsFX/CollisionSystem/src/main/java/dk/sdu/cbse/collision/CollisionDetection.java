@@ -22,6 +22,8 @@ public class CollisionDetection implements IEntityPostProcessing {
                     continue;
                 }
                 if(CheckCollision(firstEntity, secondEntity)) {
+                    
+                    //Remove entities
                     world.removeEntity(firstEntity);
                     world.removeEntity(secondEntity);
                 }

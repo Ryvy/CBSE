@@ -4,13 +4,13 @@ import dk.sdu.cbse.commonasteroid.Asteroid;
 
 public class SplitAsteroid extends Asteroid {
 
-    private int health;
+    private int splitsLeft = 1;
 
     public int getHealth() {
-        return health;
+        return splitsLeft;
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        this.splitsLeft = health;
     }
 }
