@@ -14,6 +14,7 @@ public class PlayerPlugin implements IPlugin {
         player.setXCoordinate(gameData.getWidth() / 3f);
         player.setYCoordinate(gameData.getHeight() / 3f);
         player.setCoordinates(-15,-10,15,0,-15,10,-10,0);
+        player.setSize(5);
 
         world.addEntity(player);
 

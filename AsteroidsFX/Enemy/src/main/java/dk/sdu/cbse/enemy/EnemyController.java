@@ -17,23 +17,25 @@ public class EnemyController implements IEntityProcessing {
 
     @Override
     public void process(GameData gameData, World world) {
-        if(rnd.nextInt(10) > 2) {
-            enemy.setRotationAngle(enemy.getRotationAngle() - 3);
-        }
-        if(rnd.nextInt(12) > 5) {
-            enemy.setRotationAngle(enemy.getRotationAngle() + 3);
-        }
-        if(rnd.nextInt(10) > 7) {
-            double xChange = Math.cos(Math.toRadians(enemy.getRotationAngle()));
-            double yChange = Math.sin(Math.toRadians(enemy.getRotationAngle()));
-            enemy.setXCoordinate(enemy.getXCoordinate() + xChange);
-            enemy.setYCoordinate(enemy.getYCoordinate() + yChange);
-        }
-        if(rnd.nextInt(100) > 95) {
-            BulletSPI bulletSPI = GetBulletSPI();
-            if(bulletSPI != null){
-                Entity newBullet = bulletSPI.CreateBullet(enemy, enemy.getRotationAngle());
-                world.addEntity(newBullet);
+        if(!world.getEntities(Enemy.class).isEmpty()){
+            if(rnd.nextInt(10) > 2) {
+                enemy.setRotationAngle(enemy.getRotationAngle() - 3);
+            }
+            if(rnd.nextInt(12) > 5) {
+                enemy.setRotationAngle(enemy.getRotationAngle() + 3);
+            }
+            if(rnd.nextInt(10) > 7) {
+                double xChange = Math.cos(Math.toRadians(enemy.getRotationAngle()));
+                double yChange = Math.sin(Math.toRadians(enemy.getRotationAngle()));
+                enemy.setXCoordinate(enemy.getXCoordinate() + xChange);
+                enemy.setYCoordinate(enemy.getYCoordinate() + yChange);
+            }
+            if(rnd.nextInt(100) > 95) {
+                BulletSPI bulletSPI = GetBulletSPI();
+                if(bulletSPI != null){
+                    Entity newBullet = bulletSPI.CreateBullet(enemy, enemy.getRotationAngle());
+                    world.addEntity(newBullet);
+                }
             }
         }
     }

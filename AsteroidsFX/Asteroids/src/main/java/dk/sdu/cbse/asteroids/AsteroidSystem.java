@@ -39,6 +39,7 @@ public class AsteroidSystem implements IEntityProcessing, AsteroidSPI {
         asteroid.setXCoordinate((coordinates[0]));
         asteroid.setYCoordinate((coordinates[1]));
         asteroid.setRotationAngle(rotation);
+        asteroid.setSize(size);
         return asteroid;
     }
 }

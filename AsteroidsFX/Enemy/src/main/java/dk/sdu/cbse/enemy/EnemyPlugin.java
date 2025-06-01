@@ -15,6 +15,7 @@ public class EnemyPlugin implements IPlugin {
         enemy.setYCoordinate(gameData.getHeight() / 2.5);
         enemy.setCoordinates(-15,-10,15,0,-15,10,-10,0);
         enemy.setRotationAngle(180);
+        enemy.setSize(5);
 
         world.addEntity(enemy);
 

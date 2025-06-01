@@ -16,6 +16,13 @@ public class BulletSystem implements BulletSPI, IEntityProcessing {
         bullet.setXCoordinate(player.getXCoordinate());
         bullet.setYCoordinate(player.getYCoordinate());
         bullet.setRotationAngle(player.getRotationAngle());
+        bullet.setSize(2);
+
+        //To make sure the player is shooting from the front of their ship instead of the middle
+        double xChange = Math.cos(Math.toRadians(bullet.getRotationAngle()));
+        double yChange = Math.sin(Math.toRadians(bullet.getRotationAngle()));
+        bullet.setXCoordinate(bullet.getXCoordinate() + xChange * 10);
+        bullet.setYCoordinate(bullet.getYCoordinate() + yChange * 10);
 
         return bullet;
     }
