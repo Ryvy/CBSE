@@ -7,23 +7,22 @@
   <name>AsteroidsFX</name>
   <modules>
     <module>Core</module>
+    <module>Test</module>
+    <module>Player</module>
+    <module>BulletSystem</module>
+    <module>Enemy</module>
+    <module>CollisionSystem</module>
+    <module>Common</module>
   </modules>
-
-
-
   <properties>
     <java>java</java>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.9</maven.compiler.source>
     <maven.compiler.target>1.9</maven.compiler.target>
   </properties>
-
-
   <dependencyManagement>
     <dependencies/>
   </dependencyManagement>
-
-
   <build>
     <plugins>
       <plugin>
@@ -57,7 +56,6 @@
           <arguments>
             <argument>--module-path=mods-mvn</argument>
             <argument>--class-path=libs/*</argument>
-
             <!-- because spark.core is an automatic module and actually required,
             monitor.observer.zero would be resolved as well and does not need
             to be added explicitly;
