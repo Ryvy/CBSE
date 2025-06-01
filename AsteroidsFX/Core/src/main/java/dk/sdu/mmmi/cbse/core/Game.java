@@ -4,26 +4,30 @@ import dk.sdu.cbse.common.*;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ServiceLoader;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class Game {
 
     private final World world = new World();
     private final GameData gameData = new GameData();
+    private final Map<Entity, Polygon> polygonMap = new ConcurrentHashMap<>();
     private List<IEntityProcessing> entityProcessings;
     private List<IPlugin> plugins;
     private List<IEntityPostProcessing> entityPostProcessings;
 
+    StackPane pane = new StackPane();
+    Scene scene = new Scene(pane, gameData.getWidth(), gameData.getHeight());
+
     public void startGame(Stage stage) {
         stage.setTitle("Asteroids");
-
-        StackPane root = new StackPane();
-        Scene scene = new Scene(root, gameData.getWidth(), gameData.getHeight());
 
         scene.setOnKeyPressed(event -> {
             if(event.getCode().equals(KeyCode.A)){
@@ -82,7 +86,25 @@ public class Game {
     }
 
     public void Draw(){
+        for(Entity polygon : polygonMap.keySet()){
+            if(!world.getEntities().contains(polygon)){
+                Polygon polygonToRemove = polygonMap.get(polygon);
+                polygonMap.remove(polygon);
+                pane.getChildren().remove(polygonToRemove);
+            }
+        }
 
+        for (Entity entity : world.getEntities()) {
+            Polygon polygon = polygonMap.get(entity);
+            if (polygon == null) {
+                polygon = new Polygon(entity.getCoordinates());
+                polygonMap.put(entity, polygon);
+                pane.getChildren().add(polygon);
+            }
+            polygon.setTranslateX(entity.getXCoordinate());
+            polygon.setTranslateY(entity.getYCoordinate());
+            polygon.setRotate(entity.getRotationAngle());
+        }
     }
 
 
