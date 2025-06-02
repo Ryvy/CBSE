@@ -1,2 +1,3 @@
 module-info.class
+test\java\dk\sdu\cbse\CollisionTest.class
 dk\sdu\cbse\collision\CollisionDetection.class

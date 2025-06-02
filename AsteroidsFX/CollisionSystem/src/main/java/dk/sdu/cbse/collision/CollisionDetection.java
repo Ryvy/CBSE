@@ -7,7 +7,7 @@ import dk.sdu.cbse.common.World;
 
 public class CollisionDetection implements IEntityPostProcessing {
 
-    public boolean CheckCollision(Entity e1, Entity e2) {
+    public static boolean CheckCollision(Entity e1, Entity e2) {
         double xDifference = e1.getXCoordinate() - e2.getXCoordinate();
         double yDifference = e1.getYCoordinate() - e2.getYCoordinate();
         double distance = Math.sqrt(xDifference * xDifference + yDifference * yDifference);
@@ -16,18 +16,26 @@ public class CollisionDetection implements IEntityPostProcessing {
 
     @Override
     public void process(GameData gameData, World world) {
+        CheckCollision(gameData, world);
+    }
+
+    public static boolean CheckCollision(GameData gameData, World world) {
         for(Entity firstEntity : world.getEntities()) {
             for(Entity secondEntity : world.getEntities()) {
                 if(firstEntity.equals(secondEntity)) {
                     continue;
                 }
                 if(CheckCollision(firstEntity, secondEntity)) {
-                    
+
+
                     //Remove entities
                     world.removeEntity(firstEntity);
                     world.removeEntity(secondEntity);
+
+                    return true;
                 }
             }
         }
+        return false;
     }
 }
