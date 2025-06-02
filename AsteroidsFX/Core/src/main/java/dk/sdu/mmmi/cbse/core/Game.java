@@ -27,6 +27,12 @@ public class Game {
     StackPane pane = new StackPane();
     Scene scene = new Scene(pane, gameData.getWidth(), gameData.getHeight());
 
+    public Game(List<IEntityProcessing> entityProcessings, List<IEntityPostProcessing> entityPostProcessings, List<IPlugin> plugins){
+        this.entityProcessings = entityProcessings;
+        this.entityPostProcessings = entityPostProcessings;
+        this.plugins = plugins;
+    }
+
     public void startGame(Stage stage) {
         stage.setTitle("Asteroids");
 

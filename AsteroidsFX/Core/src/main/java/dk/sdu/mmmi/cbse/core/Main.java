@@ -1,9 +1,7 @@
 package dk.sdu.mmmi.cbse.core;
-
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main extends Application
 {
@@ -14,7 +12,10 @@ public class Main extends Application
 
     @Override
     public void start(Stage primaryStage) {
-        Game game = new Game();
+
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+
+        Game game = context.getBean(Game.class);
         game.startGame(primaryStage);
         game.GameLoop();
     }
